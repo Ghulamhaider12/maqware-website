@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Run SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@v1
+        uses: sonarsource/sonarcloud-github-action@v2
         with:
           organization: your-organization-key
           token: ${{ secrets.SONAR_TOKEN }}
