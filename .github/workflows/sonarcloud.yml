@@ -1,11 +1,9 @@
 name: SonarCloud Quality Gate
-
 on:
   pull_request:
     types:
       - opened
       - synchronize
-
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
