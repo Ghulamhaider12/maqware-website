@@ -46,7 +46,7 @@ const TrendingBlogsSection = () => {
           <SwiperSlide>
             <TrendingBlogCard
               img={assetImages.Data}
-              Date={"May 20, 2021"}
+              date={"May 20, 2021"}
               Heading={"Industry Map: Digital Banking & Insurance"}
               para={
                 "Discover new digitalization opportunities for banking & insurance."
@@ -57,7 +57,7 @@ const TrendingBlogsSection = () => {
           <SwiperSlide>
             <TrendingBlogCard
               img={assetImages.Robo}
-              Date={"May 20, 2021"}
+              date={"May 20, 2021"}
               Heading={
                 "What is Artificial Intelligence? Types, History and Future"
               }
@@ -70,7 +70,7 @@ const TrendingBlogsSection = () => {
           <SwiperSlide>
             <TrendingBlogCard
               img={assetImages.Insta}
-              Date={"May 20, 2021"}
+              date={"May 20, 2021"}
               Heading={"How to use Instagram Dark Mode with iOS and Android"}
               para={
                 "Discover new digitalization opportunities for banking & insurance."

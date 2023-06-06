@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "../Utils/styles/styles";
 
-const TrendingBlogCard = ({ img, Date, Heading, para }) => {
+const TrendingBlogCard = ({ img, date, Heading, para }) => {
   const [isHover, setIsHover] = useState(false);
   const handleMouseEnter = () => {
     setIsHover(true);
@@ -23,7 +23,7 @@ const TrendingBlogCard = ({ img, Date, Heading, para }) => {
             style={styles.InnovativePara}
             className="2xl:text-[14px] xl:text-[12px] text-[10px]"
           >
-            {Date}
+            {date}
           </span>
           <p
             style={styles.TrendingBlogCardHead}

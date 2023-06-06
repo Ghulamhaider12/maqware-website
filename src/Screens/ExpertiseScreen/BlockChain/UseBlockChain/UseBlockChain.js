@@ -25,7 +25,7 @@ const UseBlockChain = () => {
       <AnimationTag>Why use Blockchain Technology?</AnimationTag>
       <div className="flex flex-wrap gap-2 xl:gap-3 2xl:gap-[1rem]">
         {cards.map((el, idx) => (
-          <BlockChainComp key={idx} Number={el.Number} text={el.text} />
+          <BlockChainComp key={idx} number={el.Number} text={el.text} />
         ))}
       </div>
     </div>
