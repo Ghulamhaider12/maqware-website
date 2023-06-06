@@ -41,7 +41,7 @@ jobs:
             sonar.javascript.lcov.reportPaths=coverage/lcov-report/*.lcov
             sonar.coverage.exclusions=**/*.test.js
       - name: Check SonarCloud Quality Gate
-        id: Quality Gate Status
+        id: check_sonarcloud
         run: |
           quality_gate_status=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: -X GET "https://sonarcloud.io/api/project_badges/quality_gate?project=Ghulamhaider12_maqware-website" | jq -r '.projectStatus.status')
           echo "SonarCloud Quality Gate Status: $quality_gate_status"
