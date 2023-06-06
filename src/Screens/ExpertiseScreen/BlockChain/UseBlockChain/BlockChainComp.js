@@ -1,18 +1,7 @@
 import React from "react";
-// import { useState } from 'react';
 import { styles } from "../../../../Utils/styles/styles";
 
 const BlockChainComp = ({ number, text }) => {
-  // const [isHover, setIsHover] = useState(false);
-
-  // const handleMouseEnter = () => {
-  //   setIsHover(true);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setIsHover(false);
-  // };
-
   return (
     <div
       className=" flex w-[32.5%] justify-start items-center md:p-2 xl:p-3 relative z-30 2xl:rounded-[100px] xl:rounded-[90px] lg:rounded-[90px] md:rounded-[90px]"
