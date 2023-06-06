@@ -2,7 +2,7 @@ import React from "react";
 // import { useState } from 'react';
 import { styles } from "../../../../Utils/styles/styles";
 
-const BlockChainComp = ({ Number, text }) => {
+const BlockChainComp = ({ number, text }) => {
   // const [isHover, setIsHover] = useState(false);
 
   // const handleMouseEnter = () => {
@@ -26,7 +26,7 @@ const BlockChainComp = ({ Number, text }) => {
         <div className="flex gap-2 items-center">
           <p className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-primary flex justify-center items-center">
             <span className="absolute 2xl:text-[16px] xl:text-[14px] lg:text-[12px] md:text-[9px] text-white">
-              {Number}
+              {number}
             </span>
           </p>
           <p
