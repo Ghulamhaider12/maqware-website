@@ -17,8 +17,32 @@
 }
 
 @font-face {
+    font-family: "Roboto-700";
+    src: local("Roboto-700"),
+    url("./Fonts/Roboto-700.ttf");
+}
+
+@font-face {
     font-family: "tex-gyre-adventor-700";
     src: local("tex-gyre-adventor-700"),
-    url("./Fonts/tex-gyre-adventor-700.ttf");
+    url("./Fonts/tex-gyre-adventor-700.otf");
+}
+
+@font-face {
+    font-family: "tex-gyre-adventor-400";
+    src: local("tex-gyre-adventor-400"),
+    url("./Fonts/tex-gyre-adventor-400.otf");
+}
+
+@font-face {
+    font-family: "ProductSans-700";
+    src: local("ProductSans-700"),
+    url("./Fonts/ProductSans-700.ttf");
+}
+
+@font-face {
+    font-family: "ProductSans-400";
+    src: local("ProductSans-400"),
+    url("./Fonts/ProductSans-400.ttf");
 }
 
