@@ -1,7 +1,6 @@
 import React from "react";
 import { AnimationTag } from "../../../../Components/Text";
 import BlockChainComp from "./BlockChainComp";
-
 const cards = [
   {
     Number: "1",
