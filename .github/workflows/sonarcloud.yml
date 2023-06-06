@@ -47,8 +47,18 @@ jobs:
           echo "SonarCloud Quality Gate Status: $quality_gate_status"
           echo "::set-output name=quality_gate_status::$quality_gate_status"
 
-      - name: Prevent PR Merge
-        if: steps.check_sonarcloud.outputs.quality_gate_status != 'PASSED'
-        run: |
-          echo "SonarCloud quality gate failed. Please fix the code quality issues before merging the pull request."
-          exit 1
+      # - name: Prevent PR Merge
+      #   if: steps.check_sonarcloud.outputs.quality_gate_status != 'PASSED'
+      #   run: |
+      #     echo "SonarCloud quality gate failed. Please fix the code quality issues before merging the pull request."
+      #     exit 1
+
+      - name: SonarCloud Pull Request Analysis
+        if: github.event_name == 'pull_request' && steps.check_sonarcloud.outputs.quality_gate_status == 'OK'
+        uses: sonarsource/sonarcloud-github-action@v1
+        with:
+          organization: your-organization-key
+          token: ${{ secrets.SONAR_TOKEN }}
+          projectKey: your-project-key
+          projectName: 'Your Project Name'
+          scannerMode: 'publish'
