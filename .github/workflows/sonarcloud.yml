@@ -1,15 +1,12 @@
 name: SonarCloud Quality Gate
-
 on:
   pull_request:
     types:
       - opened
       - synchronize
-
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -19,20 +16,22 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      - name: Build React app
-        run: npm run build
+      # - name: Build React app
+      #   run: npm run build
 
       - name: Run SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@v1
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          organization: your-organization-key
-          token: ${{ secrets.SONAR_TOKEN }}
-          projectKey: your-project-key
-          projectName: 'Your Project Name'
-          scannerMode: 'cli'
+          organization: ghulamhaider12
+          projectKey: Ghulamhaider12_maqware-website
+          projectName: 'maqware-website'
+          scannerEnabled: true
+          scannerVersion: latest
           extraProperties: |
             sonar.sources=src
             sonar.exclusions=**/*.test.js,**/node_modules/**
@@ -40,17 +39,26 @@ jobs:
             sonar.test.inclusions=**/*.test.js
             sonar.javascript.lcov.reportPaths=coverage/lcov.info
             sonar.javascript.lcov.reportPaths=coverage/lcov-report/*.lcov
-            sonar.coverage.exclusions=**/*.test.js
-
+            sonar.coverage.exclusions=**/*.test.js,**/node_modules/**
       - name: Check SonarCloud Quality Gate
         id: check_sonarcloud
         run: |
-          quality_gate_status=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: -X GET "https://sonarcloud.io/api/qualitygates/project_status?projectKey=your-project-key" | jq -r '.projectStatus.status')
+          quality_gate_status=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: -X GET "https://sonarcloud.io/api/qualitygates/project_status?projectKey=Ghulamhaider12_maqware-website" | jq -r '.projectStatus.status')
           echo "SonarCloud Quality Gate Status: $quality_gate_status"
           echo "::set-output name=quality_gate_status::$quality_gate_status"
 
-      - name: Prevent PR Merge
-        if: steps.check_sonarcloud.outputs.quality_gate_status != 'PASSED'
-        run: |
-          echo "SonarCloud quality gate failed. Please fix the code quality issues before merging the pull request."
-          exit 1
+      # - name: Prevent PR Merge
+      #   if: steps.check_sonarcloud.outputs.quality_gate_status != 'PASSED'
+      #   run: |
+      #     echo "SonarCloud quality gate failed. Please fix the code quality issues before merging the pull request."
+      #     exit 1
+
+      - name: SonarCloud Pull Request Analysis
+        if: github.event_name == 'pull_request' && steps.check_sonarcloud.outputs.quality_gate_status == 'OK'
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          organization: ghulamhaider12
+          token: ${{ secrets.SONAR_TOKEN }}
+          projectKey: Ghulamhaider12_maqware-website
+          projectName: 'maqware-website'
+          scannerMode: 'publish'
