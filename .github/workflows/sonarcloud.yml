@@ -55,10 +55,10 @@ jobs:
 
       - name: SonarCloud Pull Request Analysis
         if: github.event_name == 'pull_request' && steps.check_sonarcloud.outputs.quality_gate_status == 'OK'
-        uses: sonarsource/sonarcloud-github-action@v1
+        uses: SonarSource/sonarcloud-github-action@master
         with:
-          organization: your-organization-key
+          organization: ghulamhaider12
           token: ${{ secrets.SONAR_TOKEN }}
-          projectKey: your-project-key
-          projectName: 'Your Project Name'
+          projectKey: Ghulamhaider12_maqware-website
+          projectName: 'maqware-website'
           scannerMode: 'publish'
